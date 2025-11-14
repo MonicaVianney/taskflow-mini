@@ -1,0 +1,13 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27019
+      database: taskflow_mini
+
+server:
+  port: 8080
+
+jwt:
+  secret: miClaveSecretaSuperSeguraParaTaskFlowMini2024DebeSerLargaYCompleja
+  expiration: 86400000
