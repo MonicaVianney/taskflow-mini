@@ -11,3 +11,5 @@ server:
 jwt:
   secret: miClaveSecretaSuperSeguraParaTaskFlowMini2024DebeSerLargaYCompleja
   expiration: 86400000
+
+# Pipeline actualizado automáticamente
