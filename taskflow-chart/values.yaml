@@ -1,0 +1,21 @@
+# MongoDB Configuration
+mongodb:
+  image: mongo:latest
+  port: 27017
+  storage: 1Gi
+
+# TaskFlow API Configuration
+taskflow:
+  image: mvianney98/taskflow-mini:latest
+  replicas: 1
+  port: 8080
+
+  # Environment variables
+  env:
+    mongodbHost: mongodb-service
+    mongodbPort: "27017"
+
+# Ingress Configuration
+ingress:
+  enabled: true
+  host: taskflow.local

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taskflow-api
+spec:
+  replicas: {{ .Values.taskflow.replicas }}
+  selector:
+    matchLabels:
+      app: taskflow-api
+  template:
+    metadata:
+      labels:
+        app: taskflow-api
+    spec:
+      containers:
+        - name: taskflow-api
+          image: {{ .Values.taskflow.image }}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: {{ .Values.taskflow.port }}
+          env:
+            - name: SPRING_DATA_MONGODB_HOST
+              value: {{ .Values.taskflow.env.mongodbHost | quote }}
+            - name: SPRING_DATA_MONGODB_PORT
+              value: {{ .Values.taskflow.env.mongodbPort | quote }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: taskflow-service
+spec:
+  selector:
+    app: taskflow-api
+  ports:
+    - port: {{ .Values.taskflow.port }}
+      targetPort: {{ .Values.taskflow.port }}
+  type: NodePort

@@ -1,0 +1,21 @@
+¡TaskFlow Mini instalado exitosamente!
+
+Para acceder a la aplicación:
+
+1. Obtén la URL con port-forward:
+
+   kubectl port-forward service/taskflow-service 8080:8080
+
+2. Luego accede a:
+
+   http://localhost:8080/api/auth/login
+   http://localhost:8080/api/tasks
+
+{{- if .Values.ingress.enabled }}
+
+3. O si Ingress está configurado:
+
+   http://{{ .Values.ingress.host }}/api/auth/login
+{{- end }}
+
+¡Feliz desarrollo! 🚀

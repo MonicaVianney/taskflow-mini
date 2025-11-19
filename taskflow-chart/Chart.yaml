@@ -1,0 +1,6 @@
+apiVersion: v2
+name: taskflow
+description: TaskFlow Mini - Spring Boot API with JWT, MongoDB and Kubernetes
+type: application
+version: 1.0.0
+appVersion: "2.0"
