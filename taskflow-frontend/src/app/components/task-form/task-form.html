@@ -1,1 +1,52 @@
-<p>task-form works!</p>
+<div class="form-container">
+  <div class="form-card">
+    <h2>{{ isEditMode ? 'Editar Tarea' : 'Nueva Tarea' }}</h2>
+    
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="title">Título:</label>
+        <input 
+          type="text" 
+          id="title" 
+          [(ngModel)]="title" 
+          name="title" 
+          required
+          placeholder="Ej: Comprar leche"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="description">Descripción:</label>
+        <textarea 
+          id="description" 
+          [(ngModel)]="description" 
+          name="description"
+          rows="5"
+          placeholder="Detalles de la tarea..."
+        ></textarea>
+      </div>
+
+      @if (isEditMode) {
+        <div class="form-group checkbox-group">
+          <label>
+            <input 
+              type="checkbox" 
+              [(ngModel)]="completed" 
+              name="completed"
+            >
+            Marcar como completada
+          </label>
+        </div>
+      }
+
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">
+          {{ isEditMode ? 'Guardar Cambios' : 'Crear Tarea' }}
+        </button>
+        <button type="button" class="btn-secondary" (click)="cancel()">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
