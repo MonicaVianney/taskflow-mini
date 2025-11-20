@@ -40,6 +40,9 @@ export class Task {
   }
 
   deleteTask(id: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/tasks/${id}`, { headers: this.getHeaders() });
+    return this.http.delete(`${this.apiUrl}/tasks/${id}`, { 
+      headers: this.getHeaders(),
+      responseType: 'text' as 'json'
+    });
   }
 }

@@ -61,7 +61,9 @@ export class TaskList implements OnInit {
     if (confirm('¿Estás seguro de que deseas eliminar esta tarea?')) {
       this.taskService.deleteTask(id).subscribe({
         next: () => {
-          this.loadTasks();
+          setTimeout(() => {
+            this.loadTasks();
+          }, 100);
         },
         error: (error) => {
           console.error('Error al eliminar tarea:', error);
